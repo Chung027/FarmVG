@@ -1,0 +1,8 @@
+1,corn,grass,5
+2,pineapple,fruit,0
+3,wheat,grass,12
+4,grass,grass,3
+5,potato,root,15
+6,carrot,root,8
+7,apple,fruit,3
+8,soybean,bean,6

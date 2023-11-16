@@ -1,0 +1,6 @@
+1,cow,Normande,grass/root
+2,sheep,Ovis aries,grass/bean
+3,pig,Landrace,grass/fruit/root
+4,goat,Angora,grass/root
+5,buffalo,Bubalis,root/bean
+6,duck,Anas,root/bean
