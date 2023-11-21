@@ -20,6 +20,9 @@ public class AnimalManager {
             animalsList.add(new Animal("buffalo", "Bubalis", new ArrayList<>(Arrays.asList("root", "bean"))));
             animalsList.add(new Animal("duck", "Anas", new ArrayList<>(Arrays.asList("root", "bean"))));
         }
+        else {
+            getAnimal();
+        }
     }
     private void viewAnimal(){
         for (Animal animal : animalsList) {
@@ -188,24 +191,25 @@ public class AnimalManager {
             choiceAnimal.feed(choiceCrop);
         }
     }
-    private ArrayList <Animal> getAnimal(){ // funktionen ska läsa animal.txt, sen return den till animal lista
+    public ArrayList <Animal> getAnimal(){ // funktionen ska läsa animal.txt, sen return den till animal lista
         try {
             FileReader fileReaderAnimal = new FileReader(fileAnimal);
             BufferedReader bfAnimal = new BufferedReader(fileReaderAnimal);
             String line = bfAnimal.readLine(); // läsa file animal
-            while(line != null){ // använda loop för att läsa hela fil. när raden är tom så det ska inte läsa mer.
-                String [] variable = line.split(","); // delar variable med ','
+            while (line != null) { // använda loop för att läsa hela fil. när raden är tom så det ska inte läsa mer.
+                String[] variable = line.split(","); // delar variable med ','
                 int id = Integer.parseInt(variable[0]);
                 String name = variable[1];
                 String species = variable[2];
-                String [] cropType = variable[3].split("/"); // delar variable i cropType variable med '/'
+                String[] cropType = variable[3].split("/"); // delar variable i cropType variable med '/'
                 ArrayList<String> cropTypeList = new ArrayList<>(Arrays.asList(cropType));
-                Animal animal = new Animal(id,name,species,cropTypeList);
+                Animal animal = new Animal(id, name, species, cropTypeList);
                 animalsList.add(animal);
                 System.out.println(line);
                 line = bfAnimal.readLine();
             }
             bfAnimal.close();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -223,7 +227,7 @@ public class AnimalManager {
     public void animalMenu(CropManager cropManager) {
         boolean run = true;
         while (run) {
-            String[] menu = {"View animal", "Add animal", "Remove animal", "Feed animal", "Get animal", "Back"};
+            String[] menu = {"View animal", "Add animal", "Remove animal", "Feed animal", "Back"};
             for (int i = 0; i < menu.length; i++) {
                 System.out.println((i + 1) + ": " + menu[i]);
             }
@@ -244,9 +248,6 @@ public class AnimalManager {
                     //feedAnimalWithId(cropManager.cropsList); // andra sätt användare ska skriver in name
                     break;
                 case "5":
-                    getAnimal();
-                    break;
-                case "6":
                     run = false;
                     break;
             }

@@ -19,6 +19,9 @@ public class CropManager {
             cropsList.add(new Crop("apple", "fruit", 3));
             cropsList.add(new Crop("soybean", "bean", 6));
         }
+        else {
+            getCrops();
+        }
     }
     private void viewCrop(){
         for (int i = 0; i < cropsList.size(); i++) {
@@ -99,18 +102,19 @@ public class CropManager {
             FileReader fileReaderCrop = new FileReader(fileCrop);
             BufferedReader brCrop = new BufferedReader(fileReaderCrop);
             String line = brCrop.readLine();
-            while(line != null) {
+            while (line != null) {
                 String[] variable = line.split(",");
                 int id = Integer.parseInt(variable[0]);
                 String cropName = variable[1];
                 String cropType = variable[2];
                 int cropQuantity = Integer.parseInt(variable[3]);
-                Crop crop = new Crop(id,cropName,cropType,cropQuantity);
+                Crop crop = new Crop(id, cropName, cropType, cropQuantity);
                 cropsList.add(crop);
                 System.out.println(line);
                 line = brCrop.readLine();
             }
             brCrop.close();
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -119,7 +123,7 @@ public class CropManager {
     public void cropMenu() {
         boolean run = true;
         while (run) {
-            String[] menu = {"View Crop", "Add Crop", "Remove Crop", "Get Crop", "Back"};
+            String[] menu = {"View Crop", "Add Crop", "Remove Crop", "Back","Get crop"};
             for (int i = 0; i < menu.length; i++) {
                 System.out.println(i + 1 + ": " + menu[i]);
             }
@@ -136,9 +140,6 @@ public class CropManager {
                     deleteCrop();
                     break;
                 case "4":
-                    getCrops();
-                    break;
-                case "5":
                     run = false;
                     break;
             }
