@@ -123,7 +123,7 @@ public class CropManager {
     public void cropMenu() {
         boolean run = true;
         while (run) {
-            String[] menu = {"View Crop", "Add Crop", "Remove Crop", "Back","Get crop"};
+            String[] menu = {"View Crop", "Add Crop", "Remove Crop", "Back"};
             for (int i = 0; i < menu.length; i++) {
                 System.out.println(i + 1 + ": " + menu[i]);
             }
